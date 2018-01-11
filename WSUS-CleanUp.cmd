@@ -14,11 +14,10 @@ SET LogFilePath=%LogDirPath%\Log-WSUS-CleanUp-H%HOUR%.txt
 DEL %LogFilePath%
 
 REM Esecuzione dei task in modo separto per ridurre i rischi di timeout
-
-REM PowerShell -ExecutionPolicy RemoteSigned -File %~dp0WSUS-GetInfo.ps1 %LogFilePath%
+PowerShell -ExecutionPolicy RemoteSigned -File %~dp0WSUS-GetInfo.ps1 %LogFilePath%
 PowerShell -ExecutionPolicy RemoteSigned -File %~dp0WSUS-DeclineAggiornamentiScaduti.ps1 %LogFilePath%
 PowerShell -ExecutionPolicy RemoteSigned -File %~dp0WSUS-DeclineAggiornamentiSostituiti.ps1 %LogFilePath%
 PowerShell -ExecutionPolicy RemoteSigned -File %~dp0WSUS-CleanUpAggiornamentiObsoleti.ps1 %LogFilePath%
 PowerShell -ExecutionPolicy RemoteSigned -File %~dp0WSUS-CleanUpRevisioniObsolete.ps1 %LogFilePath%
 PowerShell -ExecutionPolicy RemoteSigned -File %~dp0WSUS-CleanUpFileNonNecessari.ps1 %LogFilePath%
-REM PowerShell -ExecutionPolicy RemoteSigned -File %~dp0WSUS-CleanUpComputerObsoleti.ps1 %LogFilePath%
+PowerShell -ExecutionPolicy RemoteSigned -File %~dp0WSUS-CleanUpComputerObsoleti.ps1 %LogFilePath%
